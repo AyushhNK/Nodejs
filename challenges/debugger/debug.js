@@ -10,4 +10,4 @@ we can debug by typing node inspect debug.js and
 visiting the crome://inspect in the chrome browser*/
 debugger			
 
-console(a-b);
+console.log(a-b);
