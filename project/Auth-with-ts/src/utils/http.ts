@@ -9,3 +9,16 @@ export const CONFLICT= 409;
 export const UNPROCESSABLE_ENTITY= 422;
 export const TOO_MANY_REQUESTS= 429;
 export const SERVICE_UNAVAILABLE= 503;
+
+export type HttpStatusCode=
+    | typeof OK
+    | typeof CREATED
+    | typeof BAD_REQUEST
+    | typeof UNAUTHORIZED
+    | typeof FORBIDDEN
+    | typeof NOT_FOUND
+    | typeof INTERNAL_SERVER_ERROR
+    | typeof CONFLICT
+    | typeof UNPROCESSABLE_ENTITY
+    | typeof TOO_MANY_REQUESTS
+    | typeof SERVICE_UNAVAILABLE;

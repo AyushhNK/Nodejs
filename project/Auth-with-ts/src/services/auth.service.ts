@@ -6,6 +6,8 @@ import {oneYearFromNow,thirtyDaysFromNow} from "../utils/date";
 import SessionModel from "../models/session.models";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET, JWT_REFRESH_SECRET } from "../constants/env";
+import appAssert from "../utils/appAssert";
+import { CONFLICT } from "../utils/http";
 
 export type CreateAccountParams={
     email:string;
@@ -15,9 +17,9 @@ export type CreateAccountParams={
 
 export const createAccount=async(data: CreateAccountParams)=>{
     const existingUser=await UserModel.exists({email:data.email});
-    if(existingUser){
-        throw new Error("User with this email already exists");
-    }
+    
+    appAssert(!existingUser, CONFLICT, "Email already in use");
+
     const user=new UserModel({
         email:data.email,
         password:data.password,
